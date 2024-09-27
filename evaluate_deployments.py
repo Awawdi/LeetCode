@@ -1,7 +1,7 @@
 import re
 
 
-def evaluate_deployments(deployments_from_user:list[str]) -> list[str]:
+def evaluate_deployments(deployments_from_user:list[str]) -> list[int]:
     """
     This function will try to parse the json data and determine number of successful/unsuccessful without using
     the JSON library.
