@@ -7,7 +7,7 @@ pipeline {
                     export PYTHONPATH=${WORKSPACE}
                     pip3 install -r ${WORKSPACE}/requirements.txt
                     cd ${WORKSPACE}/git_branches/
-                    python3 ${WORKSPACE}/git_branches/git_branch.py
+                    python3.12 ${WORKSPACE}/git_branches/git_branch.py
                     """
             }
         }
