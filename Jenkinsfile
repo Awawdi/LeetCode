@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage("Change license capacity") {
+        stage("First Step") {
             steps {
                     sh """
                     export PYTHONPATH=${WORKSPACE}
