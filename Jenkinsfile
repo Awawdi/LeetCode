@@ -5,6 +5,7 @@ pipeline {
             steps {
                     sh """
                     export PYTHONPATH=${WORKSPACE}
+                    pip3.9 install -r ${WORKSPACE}/requirements.txt
                     cd ${WORKSPACE}/git_branches/
                     python3.9 ${WORKSPACE}/git_branches/git_branch.py
                     """
