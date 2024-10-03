@@ -1,15 +1,17 @@
 pipeline {
     agent any
     stages {
-        stage("First Step") {
+        stage("Install and Run") {
             steps {
+                script {
                     sh """
-                    export PATH=\$PATH:/home/orsan/.local/bin
-                    export PYTHONPATH=${WORKSPACE}
-                    pip3.10 install -r ${WORKSPACE}/requirements.txt
+                    python3.10 -m venv venv
+                    source venv/bin/activate
+                    pip install -r ${WORKSPACE}/requirements.txt
                     cd ${WORKSPACE}/git_branches/
-                    python3.10 ${WORKSPACE}/git_branches/git_branch.py
+                    python git_branch.py
                     """
+                }
             }
         }
     }
