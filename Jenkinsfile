@@ -6,7 +6,7 @@ pipeline {
                 script {
                     sh """
                     python3.10 -m venv venv
-                    source venv/bin/activate
+                    . venv/bin/activate
                     venv/bin/pip install --upgrade pip
                     venv/bin/pip install -r ${WORKSPACE}/requirements.txt
                     cd ${WORKSPACE}/git_branches/
