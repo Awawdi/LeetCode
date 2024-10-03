@@ -6,7 +6,7 @@ pipeline {
                     sh """
                     export PYTHONPATH=${WORKSPACE}
                     cd ${WORKSPACE}/git_branches/
-                    python3.9 ${WORKSPACE}/git_branches/git_branch.py"
+                    python3.9 ${WORKSPACE}/git_branches/git_branch.py
                     """
             }
         }
