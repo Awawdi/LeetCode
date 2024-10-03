@@ -12,7 +12,7 @@ pipeline {
                     echo 'Virtual environment created at: ${pwd}/venv'  # Debugging: show where the venv is located
                     ls -l venv/bin/             # Debugging: list contents of venv/bin to check for python
                     venv/bin/pip install --upgrade pip  # Upgrade pip in the virtual environment
-                    venv/bin/pip install -r ${WORKSPACE}/requirements.txt  # Install requirements
+                    venv/bin/pip install -r ${WORKSPACE}/git_branches/requirements.txt  # Install requirements
                     cd ${WORKSPACE}/git_branches/
                     venv/bin/python git_branch.py  # Run your Python script
                     """
