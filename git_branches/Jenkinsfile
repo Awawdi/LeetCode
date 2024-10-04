@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+    stages {
+        stage("Install and Run") {
+            steps {
+                script {
+                    sh """
+                    python3 'git_branch.py'
+                    """
+                }
+            }
+        }
+    }
+}
