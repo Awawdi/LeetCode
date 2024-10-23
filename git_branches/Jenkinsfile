@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage("Install and Run") {
             steps {
-                helloWorld(email_address:"orsan.awawdi@gmail")
+                globalValidation(email_address:"orsan.awawdi@gmail")
                 script {
                     sh """
                     export PYTHONPATH=${WORKSPACE}
