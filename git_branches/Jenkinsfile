@@ -4,12 +4,12 @@ pipeline {
     stages {
         stage("Install and Run") {
             steps {
+                helloWorld()
                 script {
                     sh """
                     export PYTHONPATH=${WORKSPACE}
                     cd ${WORKSPACE}/git_branches/
                     python3 'git_branch.py'
-                    helloWorld()
                     """
                 }
             }
