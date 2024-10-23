@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage("Install and Run") {
             steps {
-                helloWorld()
+                helloWorld("Orsan","orsan.awawdi@gmail.com")
                 script {
                     sh """
                     export PYTHONPATH=${WORKSPACE}
