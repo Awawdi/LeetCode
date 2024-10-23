@@ -1,10 +1,14 @@
 @Library("shared-library") _
 pipeline {
     agent any
+    // The parameters for the Jenkins pipeline.
+    parameters {
+        string(name: 'EMAIL',defaultValue: 'orsan.awawdi@gmail.com', description: 'Email Address')
+    }
     stages {
-        stage("Install and Run") {
+        stage("Validate and Run") {
             steps {
-                globalValidation(email_address:"orsan.awawdi@gmail")
+                globalValidation(email_address:${EMAIL})
                 script {
                     sh """
                     export PYTHONPATH=${WORKSPACE}
