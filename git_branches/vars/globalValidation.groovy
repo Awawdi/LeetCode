@@ -1,12 +1,11 @@
 def call(Map config = [:]) {
     def email_address = config.email_address
 
-    if (isValidEmail(email_address)) {
-        sh "echo Email is valid: ${email_address}"
-    } else {
-        sh "echo Invalid email format: ${email_address}"
+    if (!isValidEmail(email_address)) {
+         error "Invalid email format: ${email_address}"
+         }
     }
-}
+
 
 def isValidEmail(String email) {
 
