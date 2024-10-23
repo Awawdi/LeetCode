@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage("Validate and Run") {
             steps {
-                globalValidation(email_address:"${EMAIL}")
+                globalValidation(email_address: params.EMAIL)
                 script {
                     sh """
                     export PYTHONPATH=${WORKSPACE}
