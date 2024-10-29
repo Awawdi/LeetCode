@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search</title>
+</head>
+<body>
+    <h1>Search for Movies</h1>
+    <form method="POST">
+        <input type="text" name="search" placeholder="Enter movie name" value="{{ search_string }}">
+        <input type="submit" value="Search">
+    </form>
+
+    {% if results %}
+        <h2>Search Results:</h2>
+        <ul>
+            {% for result in results %}
+                <li>{{ result }}</li>
+            {% endfor %}
+        </ul>
+    {% elif search_string %}
+        <p>No movies found for "{{ search_string }}".</p>
+    {% endif %}
+</body>
+</html>
