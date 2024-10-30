@@ -2,8 +2,9 @@ pipeline {
     agent any
 
     environment {
+        DOCKERHUB_USERNAME = 'orsanaw'
         DOCKERHUB_CREDENTIALS = 'dockerhub-credentials'  // ID of DockerHub credentials in Jenkins
-        DOCKERHUB_REPO = 'orsanaw/imdb-flask-app'  // DockerHub repository name
+        DOCKERHUB_REPO = "${env.DOCKERHUB_USERNAME}/imdb-flask-app"
         IMAGE_TAG = "v${env.BUILD_NUMBER}"  // Tagging the image with the Jenkins build number
     }
 
@@ -12,7 +13,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image using the current Jenkins build number as the tag
-                    sh "docker build -t ${DOCKERHUB_REPO}:${IMAGE_TAG} ."
+                    sh "docker build -t ${DOCKERHUB_REPO}:${IMAGE_TAG} -f IMDB/Dockerfile ."
                 }
             }
         }
