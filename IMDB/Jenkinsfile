@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKERHUB_CREDENTIALS = 'dockerhub-credentials'  // ID of DockerHub credentials in Jenkins
+        DOCKERHUB_REPO = 'orsanaw/imdb-flask-app'  // DockerHub repository name
+        IMAGE_TAG = "v${env.BUILD_NUMBER}"  // Tagging the image with the Jenkins build number
+    }
+
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build the Docker image using the current Jenkins build number as the tag
+                    sh "docker build -t ${DOCKERHUB_REPO}:${IMAGE_TAG} ."
+                }
+            }
+        }
+
+        stage('Push to DockerHub') {
+            steps {
+                script {
+                    // Login to DockerHub and push the image
+                    withCredentials([usernamePassword(credentialsId: DOCKERHUB_CREDENTIALS,
+                                                      usernameVariable: 'DOCKER_USERNAME',
+                                                      passwordVariable: 'DOCKER_PASSWORD')]) {
+                        sh "echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin"
+                        sh "docker push ${DOCKERHUB_REPO}:${IMAGE_TAG}"
+                    }
+                }
+            }
+        }
+    }
+}
