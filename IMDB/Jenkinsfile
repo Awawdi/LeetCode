@@ -13,7 +13,9 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image using the current Jenkins build number as the tag
-                    sh "docker build -t ${DOCKERHUB_REPO}:${IMAGE_TAG} -f IMDB/Dockerfile ."
+                    CMD = "docker build -t ${DOCKERHUB_REPO}:${IMAGE_TAG} -f ./IMDB/Dockerfile ."
+                    echo ${CMD}
+                    sh ${CMD}
                 }
             }
         }
